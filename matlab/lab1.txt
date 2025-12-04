@@ -1,0 +1,35 @@
+>> fis = readfis('C:\забгу\matlab\poe_ai.fis')
+
+fis = 
+
+            name: 'poe_ai'
+            type: 'sugeno'
+       andMethod: 'prod'
+        orMethod: 'probor'
+    defuzzMethod: 'wtaver'
+       impMethod: 'prod'
+       aggMethod: 'sum'
+           input: [1x4 struct]
+          output: [1x1 struct]
+            rule: [1x11 struct]
+
+>> result = evalfis([35 8 0 40], fis)
+
+[HP Enemy_Danger Flask_Charges Mob_Density]
+
+>> fis = readfis('C:\забгу\matlab\poe_ai2.fis')
+
+fis = 
+
+            name: 'poe_ai2'
+            type: 'sugeno'
+       andMethod: 'prod'
+        orMethod: 'probor'
+    defuzzMethod: 'wtaver'
+       impMethod: 'prod'
+       aggMethod: 'sum'
+           input: [1x4 struct]
+          output: [1x1 struct]
+            rule: [1x81 struct]
+
+>> result = evalfis([35 6 1 30], fis)

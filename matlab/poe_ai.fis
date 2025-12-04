@@ -1,0 +1,66 @@
+[System]
+Name='poe_ai'
+Type='sugeno'
+Version=2.0
+NumInputs=4
+NumOutputs=1
+NumRules=11
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='hp'
+Range=[0 1]
+NumMFs=3
+MF1='low':'trimf',[0 0 40]
+MF2='medium':'trimf',[20 50 80]
+MF3='high':'trimf',[60 100 120]
+
+[Input2]
+Name='enemy_danger'
+Range=[0 1]
+NumMFs=3
+MF1='low':'trapmf',[0 0 1 3]
+MF2='mf2':'trapmf',[2 4 6 8]
+MF3='high':'trapmf',[6 8 10 10]
+
+[Input3]
+Name='flask_charge'
+Range=[0 1]
+NumMFs=3
+MF1='empity':'gaussmf',[0.3 0]
+MF2='few':'gaussmf',[0.5 1.5]
+MF3='full':'gaussmf',[0.4 3]
+
+[Input4]
+Name='mod_density'
+Range=[0 1]
+NumMFs=3
+MF1='low':'trimf',[0 0 15]
+MF2='medium':'trimf',[10 25 40]
+MF3='high':'trimf',[30 50 50]
+
+[Output1]
+Name='AI_action'
+Range=[0 1]
+NumMFs=4
+MF1='flee':'constant',[0]
+MF2='defensive_flask':'constant',[0.3]
+MF3='attack':'constant',[0.6]
+MF4='ult':'constant',[1]
+
+[Rules]
+1 3 -1 -1, 1 (1) : 1
+2 1 2 -2, 3 (1) : 1
+3 3 3 -3, 4 (1) : 1
+2 1 2 -2, 2 (1) : 1
+1 3 3 -3, 2 (1) : 1
+2 2 1 -2, 3 (1) : 1
+3 1 2 -1, 4 (1) : 1
+1 3 1 3, 1 (1) : 1
+3 1 1 1, 2 (1) : 1
+1 3 3 3, 3 (1) : 1
+2 1 2 2, 4 (1) : 1
